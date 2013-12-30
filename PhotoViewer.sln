@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoViewer.UI", "PhotoViewer.UI\PhotoViewer.UI.csproj", "{35570DB0-5A45-421F-945F-4340B1C7E59E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoViewer.Domain", "PhotoViewer.Domain\PhotoViewer.Domain.csproj", "{110519BE-81DC-4480-9362-49FDFD7A803E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35570DB0-5A45-421F-945F-4340B1C7E59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35570DB0-5A45-421F-945F-4340B1C7E59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35570DB0-5A45-421F-945F-4340B1C7E59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35570DB0-5A45-421F-945F-4340B1C7E59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110519BE-81DC-4480-9362-49FDFD7A803E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110519BE-81DC-4480-9362-49FDFD7A803E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110519BE-81DC-4480-9362-49FDFD7A803E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110519BE-81DC-4480-9362-49FDFD7A803E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
