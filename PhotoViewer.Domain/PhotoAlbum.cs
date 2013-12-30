@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace PhotoViewer.Domain
 {
-    class Program
+    public class PhotoAlbum
     {
-        static void Main(string[] args)
-        {
-            Photo photo = new Photo("rose.jpg");
-        }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public DateTime EventDate { get; set; }
     }
 }
