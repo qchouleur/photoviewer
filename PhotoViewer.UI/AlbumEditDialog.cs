@@ -18,6 +18,7 @@ namespace PhotoViewer.UI
         {
             InitializeComponent();
 
+            this.Icon = Resources.Icon;
             this.Text = Resources.CreateAlbumDialogFormTitle;
 
             this.SubTitleLabel.Text = Resources.SubTitle;

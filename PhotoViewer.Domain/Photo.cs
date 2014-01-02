@@ -11,6 +11,8 @@ namespace PhotoViewer.Domain
     public class Photo
     {
         
+        public static readonly Photo EmptyPhoto = new Photo();
+
         public string Category { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
@@ -32,6 +34,7 @@ namespace PhotoViewer.Domain
 
         #endregion
 
+        public Photo() { } 
         public Photo(string path)
         {
             this.Path = path;

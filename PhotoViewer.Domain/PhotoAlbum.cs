@@ -12,6 +12,8 @@ namespace PhotoViewer.Domain
         public string SubTitle { get; set; }
         public DateTime EventDate { get; set; }
 
+        public int Count { get { return photos.Count; } }
+
         private List<Photo> photos = new List<Photo>();
 
         public PhotoAlbum() {  }
@@ -23,6 +25,12 @@ namespace PhotoViewer.Domain
             this.EventDate = date;
         }
 
+        public Photo this[int index]
+        {
+            get { return photos[index]; }
+            set { photos[index] = value; }
+        }
+
         public bool Contains(Photo photo)
         {
             return photos.Contains(photo);
@@ -32,5 +40,19 @@ namespace PhotoViewer.Domain
         {
             photos.Remove(photo);
         }
+    
+        public void Add(Photo photo)
+        {
+            this.photos.Add(photo);
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return !photos.Any();
+            }
+        }
+
     }
 }
