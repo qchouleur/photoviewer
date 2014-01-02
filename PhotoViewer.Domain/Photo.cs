@@ -10,23 +10,21 @@ namespace PhotoViewer.Domain
 {
     public class Photo
     {
-
-        private static readonly int ExifTitleId = 0x0320;
-        private static readonly int ExifManufacturerId = 0x010F;
-        private static readonly int ExifEquipmentId = 0x0110;
-
-
-
-        public static readonly string StoragePath = @"C:\Users\QC\Projects\PhotoViewer";
-
+        
         public string Category { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
         public DateTime DateTaken { get; set ;}
 
+        public string Path { get; set; }
+
         private readonly Image content;
 
-        #region EXIF 
+        #region EXIF
+
+        private static readonly int ExifTitleId = 0x0320;
+        private static readonly int ExifManufacturerId = 0x010F;
+        private static readonly int ExifEquipmentId = 0x0110;
 
         public string Title { get; private set; }
         public string EquipmentManufacturer { get; private set; }
@@ -34,9 +32,10 @@ namespace PhotoViewer.Domain
 
         #endregion
 
-        public Photo(string name)
+        public Photo(string path)
         {
-            content = Image.FromFile(Path.Combine(StoragePath,name));
+            this.Path = path;
+            this.content = Image.FromFile(path);
 
             this.Title = retrieveExifDataById(ExifTitleId);
             this.EquipmentManufacturer = retrieveExifDataById(ExifManufacturerId);
