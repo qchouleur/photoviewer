@@ -59,6 +59,12 @@
     <Compile Include="AlbumEditDialog.Designer.cs">
       <DependentUpon>AlbumEditDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbumSlideshowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlbumSlideshowForm.Designer.cs">
+      <DependentUpon>AlbumSlideshowForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlbumForm.resx">
@@ -66,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumEditDialog.resx">
       <DependentUpon>AlbumEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumSlideshowForm.resx">
+      <DependentUpon>AlbumSlideshowForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,6 +107,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emptyAlbum.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

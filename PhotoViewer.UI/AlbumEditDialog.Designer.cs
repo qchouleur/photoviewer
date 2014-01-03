@@ -34,8 +34,8 @@
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.SubTitleTextBox = new System.Windows.Forms.TextBox();
             this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.SaveAlbumButton = new System.Windows.Forms.Button();
+            this.CancelAlbumButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -86,33 +86,33 @@
             this.DateTimePicker.Size = new System.Drawing.Size(310, 20);
             this.DateTimePicker.TabIndex = 5;
             // 
-            // SaveButton
+            // SaveAlbumButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 168);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(83, 23);
-            this.SaveButton.TabIndex = 6;
-            this.SaveButton.Text = "SaveButton";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveAlbumButton.Location = new System.Drawing.Point(12, 168);
+            this.SaveAlbumButton.Name = "SaveAlbumButton";
+            this.SaveAlbumButton.Size = new System.Drawing.Size(83, 23);
+            this.SaveAlbumButton.TabIndex = 6;
+            this.SaveAlbumButton.Text = "SaveButton";
+            this.SaveAlbumButton.UseVisualStyleBackColor = true;
+            this.SaveAlbumButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // CancelButton
+            // CancelAlbumButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(101, 168);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(83, 23);
-            this.CancelButton.TabIndex = 7;
-            this.CancelButton.Text = "CancelButton";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelAlbumButton.Location = new System.Drawing.Point(101, 168);
+            this.CancelAlbumButton.Name = "CancelAlbumButton";
+            this.CancelAlbumButton.Size = new System.Drawing.Size(83, 23);
+            this.CancelAlbumButton.TabIndex = 7;
+            this.CancelAlbumButton.Text = "CancelButton";
+            this.CancelAlbumButton.UseVisualStyleBackColor = true;
+            this.CancelAlbumButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AlbumEditDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 202);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.CancelAlbumButton);
+            this.Controls.Add(this.SaveAlbumButton);
             this.Controls.Add(this.DateTimePicker);
             this.Controls.Add(this.SubTitleTextBox);
             this.Controls.Add(this.TitleTextBox);
@@ -131,8 +131,8 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label SubTitleLabel;
         private System.Windows.Forms.Label DateLabel;
-        private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button SaveAlbumButton;
+        private System.Windows.Forms.Button CancelAlbumButton;
         public System.Windows.Forms.TextBox TitleTextBox;
         public System.Windows.Forms.TextBox SubTitleTextBox;
         public System.Windows.Forms.DateTimePicker DateTimePicker;

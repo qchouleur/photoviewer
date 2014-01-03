@@ -23,7 +23,6 @@ namespace PhotoViewer.Domain
             }
         }
         
-
         private readonly Timer slideTimer;
         private readonly Action onSlideAction;
         private readonly PhotoAlbum album;
@@ -47,25 +46,29 @@ namespace PhotoViewer.Domain
             this.album = album;
 
             slideTimer = new Timer(DefaultSlideIntervalInMilliseconds);
-            slideTimer.Elapsed += OnSlideIntervalElapsed;
+            slideTimer.Elapsed += onSlideIntervalElapsed;
         }
 
-        private void OnSlideIntervalElapsed(object sender, ElapsedEventArgs e)
+        private void onSlideIntervalElapsed(object sender, ElapsedEventArgs e)
         {
             NextPhoto();
         }
 
-        private void IncreaseSlideSpeed()
+        public void IncreaseSlideSpeed()
         {
             if (slideTimer.Interval - IntervalIncrementInMilliseconds > 0)
             {
+                slideTimer.Stop();
                 slideTimer.Interval -= IntervalIncrementInMilliseconds;
+                slideTimer.Start();
             }
         }
 
-        private void DecreaseSlideSpeed()
+        public void DecreaseSlideSpeed()
         {
+            slideTimer.Stop();
             slideTimer.Interval += IntervalIncrementInMilliseconds;
+            slideTimer.Start();
         }
 
         public void Start()

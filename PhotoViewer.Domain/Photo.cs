@@ -20,7 +20,7 @@ namespace PhotoViewer.Domain
 
         public string Path { get; set; }
 
-        private readonly Image content;
+        public Image Image { get; private set; }
 
         #region EXIF
 
@@ -38,7 +38,7 @@ namespace PhotoViewer.Domain
         public Photo(string path)
         {
             this.Path = path;
-            this.content = Image.FromFile(path);
+            this.Image = Image.FromFile(path);
 
             this.Title = retrieveExifDataById(ExifTitleId);
             this.EquipmentManufacturer = retrieveExifDataById(ExifManufacturerId);
@@ -48,13 +48,13 @@ namespace PhotoViewer.Domain
 
         private string retrieveExifDataById(int propertyId)
         {
-            if (!content.PropertyIdList.Contains(propertyId))
+            if (!Image.PropertyIdList.Contains(propertyId))
             {
                 return string.Empty;
             }
 
             return Encoding.ASCII.GetString(
-                content.GetPropertyItem(propertyId).Value);
+                Image.GetPropertyItem(propertyId).Value);
         }
     }
 }

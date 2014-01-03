@@ -25,10 +25,10 @@ namespace PhotoViewer.UI
             this.TitleLabel.Text = Resources.Title;
             this.DateLabel.Text = Resources.Date;
 
-            this.SaveButton.Text = Resources.Save;
-            this.CancelButton.Text = Resources.Cancel;
+            this.SaveAlbumButton.Text = Resources.Save;
+            this.CancelAlbumButton.Text = Resources.Cancel;
 
-            this.AcceptButton = this.SaveButton;
+            this.AcceptButton = this.SaveAlbumButton;
         }
 
         public AlbumEditDialog(PhotoAlbum album) : this()
