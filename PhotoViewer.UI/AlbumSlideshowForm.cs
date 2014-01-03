@@ -15,6 +15,9 @@ namespace PhotoViewer.UI
     public partial class AlbumSlideshowForm : Form
     {
         private readonly AlbumSlideshow slideshow;
+        private Rectangle formBoundsBeforeFullScreen { get; set; }
+        private Rectangle pictureBoxBoundsBeforeFullScreen { get; set; }
+        private bool isFullScreen { get; set; }
 
         public AlbumSlideshowForm(PhotoAlbum album)
         {
@@ -42,12 +45,7 @@ namespace PhotoViewer.UI
             onSlide();
         }
 
-        private void onSlide()
-        {
-            pictureBox.Image = (slideshow.CurrentPhoto == Photo.EmptyPhoto) ?
-                Resources.emptyAlbum : slideshow.CurrentPhoto.Image;
-        }
-
+        
         private static void InitializeImageButton(Button button, Image image)
         {
             button.Image = image;
@@ -60,7 +58,7 @@ namespace PhotoViewer.UI
             
         }
 
-        
+        #region EventHandlers
 
         private void PlayPauseButton_Click(object sender, EventArgs e)
         {
@@ -98,6 +96,37 @@ namespace PhotoViewer.UI
             this.slideshow.IncreaseSlideSpeed();
         }
 
+        private void onSlide()
+        {
+            pictureBox.Image = (slideshow.CurrentPhoto == Photo.EmptyPhoto) ?
+                Resources.emptyAlbum : slideshow.CurrentPhoto.Image;
+
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F11:
+                    if (!this.isFullScreen)
+                    {
+                        this.enterFullScreen();
+                    }
+                    return true;
+                case Keys.Escape :
+                    if (this.isFullScreen)
+                    {
+                        this.exitFullScreen();
+                    }
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        #endregion
+        
+
         private void ShowSpeedControlButtons()
         {
             SlideAccelerateButton.Show();
@@ -109,5 +138,33 @@ namespace PhotoViewer.UI
             SlideDecelerateButton.Hide();
             SlideAccelerateButton.Hide();
         }
+
+        private void enterFullScreen()
+        {
+            this.isFullScreen = true;
+
+            this.formBoundsBeforeFullScreen = this.Bounds;
+            this.pictureBoxBoundsBeforeFullScreen = this.pictureBox.Bounds;
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Bounds = Screen.PrimaryScreen.Bounds;
+
+            this.pictureBox.BringToFront();
+            this.pictureBox.Bounds = this.Bounds;
+        }
+
+        private void exitFullScreen()
+        {
+            this.isFullScreen = false;
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+
+            this.Bounds = this.formBoundsBeforeFullScreen;
+
+            this.pictureBox.Bounds = this.pictureBoxBoundsBeforeFullScreen;
+            this.pictureBox.SendToBack();
+
+        }
+
     }
 }
