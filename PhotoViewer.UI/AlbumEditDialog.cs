@@ -12,13 +12,12 @@ using System.Windows.Forms;
 
 namespace PhotoViewer.UI
 {
-    public partial class AlbumEditDialog : Form
+    public partial class AlbumEditDialog : PhotoViewerForm
     {
         public AlbumEditDialog()
         {
             InitializeComponent();
 
-            this.Icon = Resources.Icon;
             this.Text = Resources.CreateAlbumDialogFormTitle;
 
             this.SubTitleLabel.Text = Resources.SubTitle;

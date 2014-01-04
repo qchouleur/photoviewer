@@ -13,6 +13,7 @@ namespace PhotoViewer.Domain
         public DateTime EventDate { get; set; }
 
         public int Count { get { return photos.Count; } }
+        public IEnumerable<Photo> Photos { get { return photos.AsReadOnly(); } }
 
         private List<Photo> photos = new List<Photo>();
 
@@ -44,6 +45,11 @@ namespace PhotoViewer.Domain
         public void Add(Photo photo)
         {
             this.photos.Add(photo);
+        }
+
+        public void Add(IEnumerable<Photo> photos)
+        {
+            this.photos.AddRange(photos);
         }
 
         public bool IsEmpty

@@ -184,4 +184,25 @@
   <data name="Title" xml:space="preserve">
     <value>Titre</value>
   </data>
+  <data name="addPhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addPhoto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="importPhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="OpenDialogTitle" xml:space="preserve">
+    <value>PhotoViewer - Ouvrir</value>
+  </data>
+  <data name="removePhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\subtract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Slideshow" xml:space="preserve">
+    <value>Diaporama</value>
+  </data>
+  <data name="SlideshowFormTitle" xml:space="preserve">
+    <value>PhotoViewer - Diaporama</value>
+  </data>
 </root>

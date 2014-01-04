@@ -9,7 +9,7 @@ namespace PhotoViewer.Domain
 {
     public class InternalPhotoBase
     {
-        private static readonly string ApplicationFolderPath = Path.Combine(
+        public static readonly string ApplicationFolderPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "PhotoViewer");
         
@@ -37,12 +37,14 @@ namespace PhotoViewer.Domain
                 if (instance == null)
                 {
                     instance = new InternalPhotoBase();
+                    InternalPhotoBase.Instance.Add(new Photo(@"C:\Users\QC\AppData\Roaming\PhotoViewer\a.jpg"));
+                    InternalPhotoBase.Instance.Add(new Photo(@"C:\Users\QC\AppData\Roaming\PhotoViewer\b.jpg"));
+
                 }
 
                 return instance;
             }
         }
-
 
 
         public void Add(PhotoAlbum album)
@@ -53,6 +55,11 @@ namespace PhotoViewer.Domain
         public void Remove(PhotoAlbum album)
         {
             this.albums.Remove(album);
+        }
+
+        public void Add(Photo photo)
+        {
+            this.photos.Add(photo);
         }
 
         public void Add(IEnumerable<Photo> photos) 
@@ -90,6 +97,11 @@ namespace PhotoViewer.Domain
         public IEnumerable<PhotoAlbum> GetAlbums()
         {
             return this.albums.AsReadOnly();
+        }
+    
+        public IEnumerable<Photo> GetPhotos()
+        {
+            return photos.AsReadOnly();
         }
     }
 }

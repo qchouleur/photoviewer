@@ -16,7 +16,7 @@ namespace PhotoViewer.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AlbumSlideshowForm(new Domain.PhotoAlbum()));
+            Application.Run(new AlbumForm());
         }
     }
 }

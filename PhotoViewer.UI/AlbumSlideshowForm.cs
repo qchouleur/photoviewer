@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PhotoViewer.UI
 {
-    public partial class AlbumSlideshowForm : Form
+    public partial class AlbumSlideshowForm : PhotoViewerForm
     {
         private readonly AlbumSlideshow slideshow;
         private Rectangle formBoundsBeforeFullScreen { get; set; }
@@ -21,43 +21,31 @@ namespace PhotoViewer.UI
 
         public AlbumSlideshowForm(PhotoAlbum album)
         {
-            album.Add(new Photo(@"C:\Users\QC\Downloads\random.jpg"));
-            album.Add(new Photo(@"C:\Users\QC\Downloads\random-pics.jpg"));
-            album.Add(new Photo(@"C:\Users\QC\Downloads\index.jpg"));
-
 
             this.slideshow = new AlbumSlideshow(album, () => { this.onSlide(); });
 
             InitializeComponent();
 
             this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
             this.MinimumSize = this.Size;
+            this.Text = Resources.SlideshowFormTitle;
 
-            InitializeImageButton(PlayPauseButton, Resources.play);
-            InitializeImageButton(NextButton, Resources.next);
-            InitializeImageButton(PreviousButton, Resources.previous);
-            InitializeImageButton(SlideAccelerateButton, Resources.add);
-            InitializeImageButton(SlideDecelerateButton, Resources.minus);
+            PlayPauseButton.ToImageButton(Resources.play);
+            NextButton.ToImageButton(Resources.next);
+            PreviousButton.ToImageButton(Resources.previous);
+            SlideAccelerateButton.ToImageButton(Resources.add);
+            SlideDecelerateButton.ToImageButton(Resources.minus);
 
             HideSpeedControlButtons();
 
             onSlide();
+
+            // Permet de récupérer l'évenement OnKeyPress
+            this.KeyPreview = true;
         }
 
         
-        private static void InitializeImageButton(Button button, Image image)
-        {
-            button.Image = image;
-            button.Size = image.Size;
-            button.MinimumSize = image.Size;
-
-            button.FlatStyle = FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
-            button.Text = string.Empty;
-            
-        }
-
+        
         #region EventHandlers
 
         private void PlayPauseButton_Click(object sender, EventArgs e)
@@ -107,6 +95,16 @@ namespace PhotoViewer.UI
         {
             switch (keyData)
             {
+
+                case Keys.Space:
+                    PlayPauseButton_Click(this, null);
+                    return true;
+                case Keys.Right:
+                    slideshow.NextPhoto();
+                    return true;
+                case Keys.Left :
+                    slideshow.PreviousPhoto();
+                    return true;
                 case Keys.F11:
                     if (!this.isFullScreen)
                     {
@@ -122,6 +120,24 @@ namespace PhotoViewer.UI
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
             }
+        }
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '+' :
+                    slideshow.IncreaseSlideSpeed();
+                    break;
+                case '-' :
+                    slideshow.DecreaseSlideSpeed();
+                    break;
+                default :
+                    base.OnKeyPress(e);
+                    break;
+            }
+
+            
         }
 
         #endregion

@@ -13,10 +13,12 @@ namespace PhotoViewer.Domain
         
         public static readonly Photo EmptyPhoto = new Photo();
 
+        public string Name { get { return System.IO.Path.GetFileNameWithoutExtension(Path); } }
         public string Category { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
         public DateTime DateTaken { get; set ;}
+        
 
         public string Path { get; set; }
 

@@ -65,6 +65,16 @@
     <Compile Include="AlbumSlideshowForm.Designer.cs">
       <DependentUpon>AlbumSlideshowForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageButtonStyleExtension.cs" />
+    <Compile Include="OpenPhotoFromStorageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenPhotoFromStorageDialog.Designer.cs">
+      <DependentUpon>OpenPhotoFromStorageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlbumForm.resx">
@@ -75,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumSlideshowForm.resx">
       <DependentUpon>AlbumSlideshowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenPhotoFromStorageDialog.resx">
+      <DependentUpon>OpenPhotoFromStorageDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,6 +144,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\emptyAlbum.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subtract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addPhoto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
