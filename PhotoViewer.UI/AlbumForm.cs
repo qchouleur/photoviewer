@@ -165,7 +165,7 @@ namespace PhotoViewer.UI
         private void updateAlbumPhotosList()
         {
             this.PhotoListView.Items.Clear();
-            if (selectedAlbum == null)
+            if (!IsAlbumSelected())
             {
                 return;
             }
@@ -178,7 +178,7 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void AddPhotoButton_Click(object sender, EventArgs e)
+        private void onAddPhotoClick(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
             {
@@ -199,7 +199,7 @@ namespace PhotoViewer.UI
 
         }
 
-        private void RemovePhotoButton_Click(object sender, EventArgs e)
+        private void onRemovePhotoClick(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
             {
@@ -221,7 +221,7 @@ namespace PhotoViewer.UI
             updateAlbumPhotosList();
         }
 
-        private void ImportExternalPhotoButton_Click(object sender, EventArgs e)
+        private void onImportPhotoClick(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
             {
@@ -245,7 +245,7 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void DeletePhotoButton_Click(object sender, EventArgs e)
+        private void onDeletePhotoClick(object sender, EventArgs e)
         {
             if (!selectedPhotos.Any())
             {
@@ -262,7 +262,7 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void AlbumTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void onAlbumSelection(object sender, TreeViewEventArgs e)
         {
             updateAlbumPhotosList();
         }

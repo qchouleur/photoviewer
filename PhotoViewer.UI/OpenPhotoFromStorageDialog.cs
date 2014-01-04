@@ -59,12 +59,12 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
+        private void onCancelClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        private void Ok_Click(object sender, EventArgs e)
+        private void onOkClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }

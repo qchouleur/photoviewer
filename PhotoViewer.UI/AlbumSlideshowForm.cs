@@ -44,11 +44,10 @@ namespace PhotoViewer.UI
             this.KeyPreview = true;
         }
 
-        
-        
+       
         #region EventHandlers
 
-        private void PlayPauseButton_Click(object sender, EventArgs e)
+        private void onPlayPauseClick(object sender, EventArgs e)
         {
             if (slideshow.Started)
             {
@@ -64,22 +63,22 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void NextButton_Click(object sender, EventArgs e)
+        private void onNextClick(object sender, EventArgs e)
         {
             slideshow.NextPhoto();
         }
 
-        private void PreviousButton_Click(object sender, EventArgs e)
+        private void onPreviousClick(object sender, EventArgs e)
         {
             slideshow.PreviousPhoto();
         }
 
-        private void SlideDecelerateButton_Click(object sender, EventArgs e)
+        private void onSlideDecelerateClick(object sender, EventArgs e)
         {
             this.slideshow.DecreaseSlideSpeed();
         }
 
-        private void SlideAccelerateButton_Click(object sender, EventArgs e)
+        private void onSlideAccelerateClick(object sender, EventArgs e)
         {
             this.slideshow.IncreaseSlideSpeed();
         }
@@ -97,7 +96,7 @@ namespace PhotoViewer.UI
             {
 
                 case Keys.Space:
-                    PlayPauseButton_Click(this, null);
+                    onPlayPauseClick(this, null);
                     return true;
                 case Keys.Right:
                     slideshow.NextPhoto();

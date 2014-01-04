@@ -49,7 +49,7 @@
             this.OkButton.TabIndex = 1;
             this.OkButton.Text = "OpenPhotoButton";
             this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.Ok_Click);
+            this.OkButton.Click += new System.EventHandler(this.onOkClick);
             // 
             // Cancel
             // 
@@ -59,7 +59,7 @@
             this.Cancel.TabIndex = 2;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
-            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
+            this.Cancel.Click += new System.EventHandler(this.onCancelClick);
             // 
             // OpenPhotoFromStorageDialog
             // 

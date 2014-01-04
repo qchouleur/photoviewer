@@ -94,7 +94,7 @@
             this.SaveAlbumButton.TabIndex = 6;
             this.SaveAlbumButton.Text = "SaveButton";
             this.SaveAlbumButton.UseVisualStyleBackColor = true;
-            this.SaveAlbumButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveAlbumButton.Click += new System.EventHandler(this.onSaveClick);
             // 
             // CancelAlbumButton
             // 
@@ -104,7 +104,7 @@
             this.CancelAlbumButton.TabIndex = 7;
             this.CancelAlbumButton.Text = "CancelButton";
             this.CancelAlbumButton.UseVisualStyleBackColor = true;
-            this.CancelAlbumButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelAlbumButton.Click += new System.EventHandler(this.onCancelClick);
             // 
             // AlbumEditDialog
             // 

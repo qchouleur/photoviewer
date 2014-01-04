@@ -44,7 +44,7 @@
             this.AlbumTreeView.Name = "AlbumTreeView";
             this.AlbumTreeView.Size = new System.Drawing.Size(132, 507);
             this.AlbumTreeView.TabIndex = 0;
-            this.AlbumTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.AlbumTreeView_AfterSelect);
+            this.AlbumTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.onAlbumSelection);
             // 
             // PhotoListView
             // 
@@ -66,7 +66,7 @@
             this.AddPhotoButton.Size = new System.Drawing.Size(32, 32);
             this.AddPhotoButton.TabIndex = 2;
             this.AddPhotoButton.UseVisualStyleBackColor = true;
-            this.AddPhotoButton.Click += new System.EventHandler(this.AddPhotoButton_Click);
+            this.AddPhotoButton.Click += new System.EventHandler(this.onAddPhotoClick);
             // 
             // RemovePhotoButton
             // 
@@ -76,7 +76,7 @@
             this.RemovePhotoButton.Size = new System.Drawing.Size(32, 32);
             this.RemovePhotoButton.TabIndex = 3;
             this.RemovePhotoButton.UseVisualStyleBackColor = true;
-            this.RemovePhotoButton.Click += new System.EventHandler(this.RemovePhotoButton_Click);
+            this.RemovePhotoButton.Click += new System.EventHandler(this.onRemovePhotoClick);
             // 
             // ImportExternalPhotoButton
             // 
@@ -86,7 +86,7 @@
             this.ImportExternalPhotoButton.Size = new System.Drawing.Size(32, 32);
             this.ImportExternalPhotoButton.TabIndex = 4;
             this.ImportExternalPhotoButton.UseVisualStyleBackColor = true;
-            this.ImportExternalPhotoButton.Click += new System.EventHandler(this.ImportExternalPhotoButton_Click);
+            this.ImportExternalPhotoButton.Click += new System.EventHandler(this.onImportPhotoClick);
             // 
             // DeletePhotoButton
             // 
@@ -96,7 +96,7 @@
             this.DeletePhotoButton.Size = new System.Drawing.Size(32, 32);
             this.DeletePhotoButton.TabIndex = 5;
             this.DeletePhotoButton.UseVisualStyleBackColor = true;
-            this.DeletePhotoButton.Click += new System.EventHandler(this.DeletePhotoButton_Click);
+            this.DeletePhotoButton.Click += new System.EventHandler(this.onDeletePhotoClick);
             // 
             // AlbumForm
             // 

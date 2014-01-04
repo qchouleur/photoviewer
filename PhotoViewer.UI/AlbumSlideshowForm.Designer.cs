@@ -46,7 +46,7 @@
             this.PlayPauseButton.TabIndex = 0;
             this.PlayPauseButton.Text = "PlayPause";
             this.PlayPauseButton.UseVisualStyleBackColor = true;
-            this.PlayPauseButton.Click += new System.EventHandler(this.PlayPauseButton_Click);
+            this.PlayPauseButton.Click += new System.EventHandler(this.onPlayPauseClick);
             // 
             // NextButton
             // 
@@ -57,7 +57,7 @@
             this.NextButton.TabIndex = 1;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
-            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
+            this.NextButton.Click += new System.EventHandler(this.onNextClick);
             // 
             // PreviousButton
             // 
@@ -68,7 +68,7 @@
             this.PreviousButton.TabIndex = 2;
             this.PreviousButton.Text = "Previous";
             this.PreviousButton.UseVisualStyleBackColor = true;
-            this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
+            this.PreviousButton.Click += new System.EventHandler(this.onPreviousClick);
             // 
             // SlideAccelerateButton
             // 
@@ -79,7 +79,7 @@
             this.SlideAccelerateButton.TabIndex = 3;
             this.SlideAccelerateButton.Text = "SpeedUp";
             this.SlideAccelerateButton.UseVisualStyleBackColor = true;
-            this.SlideAccelerateButton.Click += new System.EventHandler(this.SlideAccelerateButton_Click);
+            this.SlideAccelerateButton.Click += new System.EventHandler(this.onSlideAccelerateClick);
             // 
             // SlideDecelerateButton
             // 
@@ -90,7 +90,7 @@
             this.SlideDecelerateButton.TabIndex = 4;
             this.SlideDecelerateButton.Text = "SpeedDown";
             this.SlideDecelerateButton.UseVisualStyleBackColor = true;
-            this.SlideDecelerateButton.Click += new System.EventHandler(this.SlideDecelerateButton_Click);
+            this.SlideDecelerateButton.Click += new System.EventHandler(this.onSlideDecelerateClick);
             // 
             // pictureBox
             // 

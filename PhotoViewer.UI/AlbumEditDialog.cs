@@ -37,7 +37,7 @@ namespace PhotoViewer.UI
             this.DateTimePicker.Value = album.EventDate;
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void onSaveClick(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(this.TitleTextBox.Text))
             {
@@ -49,12 +49,10 @@ namespace PhotoViewer.UI
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void onCancelClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
-
-
 
     }
 }
