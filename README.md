@@ -9,7 +9,9 @@ Simple photo album content manager that enables you to add informations about yo
 
 ####AUTHOR
 *Quentin Chouleur* 
+
 <qchouleur@pobox.com>
+
 <chouleur@et.esiea.fr>
 
 
