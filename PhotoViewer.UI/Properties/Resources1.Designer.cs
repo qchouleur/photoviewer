@@ -71,12 +71,30 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter.
+        /// </summary>
+        internal static string AddElement {
+            get {
+                return ResourceManager.GetString("AddElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap addPhoto {
             get {
                 object obj = ResourceManager.GetObject("addPhoto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ajouter depuis la base interne.
+        /// </summary>
+        internal static string AddPhotoFromStorage {
+            get {
+                return ResourceManager.GetString("AddPhotoFromStorage", resourceCulture);
             }
         }
         
@@ -135,6 +153,15 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Créer un album.
+        /// </summary>
+        internal static string CreateAlbum {
+            get {
+                return ResourceManager.GetString("CreateAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PhotoViewer - Créer un album.
         /// </summary>
         internal static string CreateAlbumDialogFormTitle {
@@ -162,12 +189,30 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supprimer un album.
+        /// </summary>
+        internal static string DeleteAlbum {
+            get {
+                return ResourceManager.GetString("DeleteAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap deletePhoto {
             get {
                 object obj = ResourceManager.GetObject("deletePhoto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer la photo de la base interne.
+        /// </summary>
+        internal static string DeletePhotoFromStorage {
+            get {
+                return ResourceManager.GetString("DeletePhotoFromStorage", resourceCulture);
             }
         }
         
@@ -190,11 +235,39 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editer les informations de l&apos;album.
+        /// </summary>
+        internal static string EditAlbumInformation {
+            get {
+                return ResourceManager.GetString("EditAlbumInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editIcon {
+            get {
+                object obj = ResourceManager.GetObject("editIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PhotoViewer - Editer une photo.
         /// </summary>
         internal static string EditPhotoDialogFormTitle {
             get {
                 return ResourceManager.GetString("EditPhotoDialogFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editer les informations de la photo.
+        /// </summary>
+        internal static string EditPhotoInformation {
+            get {
+                return ResourceManager.GetString("EditPhotoInformation", resourceCulture);
             }
         }
         
@@ -224,6 +297,15 @@ namespace PhotoViewer.UI.Properties {
             get {
                 object obj = ResourceManager.GetObject("Icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importer.
+        /// </summary>
+        internal static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
             }
         }
         
@@ -295,6 +377,15 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Photo.
+        /// </summary>
+        internal static string Photo {
+            get {
+                return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La suppression de photo(s) est irréversible, êtes-vous sûr de vouloir continuer ?.
         /// </summary>
         internal static string PhotoDeleteValidationMessage {
@@ -341,6 +432,24 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merci de bien vouloir selectionner une ou plusieurs photos..
+        /// </summary>
+        internal static string PleaseSelectOneOrMorePhotos {
+            get {
+                return ResourceManager.GetString("PleaseSelectOneOrMorePhotos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merci de bien vouloir selectionner une photo..
+        /// </summary>
+        internal static string PleaseSelectOnePhoto {
+            get {
+                return ResourceManager.GetString("PleaseSelectOnePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap previous {
@@ -366,6 +475,15 @@ namespace PhotoViewer.UI.Properties {
             get {
                 object obj = ResourceManager.GetObject("removePhoto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer de l&apos;album.
+        /// </summary>
+        internal static string RemovePhotoFromAlbum {
+            get {
+                return ResourceManager.GetString("RemovePhotoFromAlbum", resourceCulture);
             }
         }
         
@@ -421,6 +539,15 @@ namespace PhotoViewer.UI.Properties {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enlever.
+        /// </summary>
+        internal static string Withdraw {
+            get {
+                return ResourceManager.GetString("Withdraw", resourceCulture);
             }
         }
         

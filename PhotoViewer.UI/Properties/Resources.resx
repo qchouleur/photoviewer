@@ -241,4 +241,46 @@
   <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AddElement" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddPhotoFromStorage" xml:space="preserve">
+    <value>Ajouter depuis la base interne</value>
+  </data>
+  <data name="CreateAlbum" xml:space="preserve">
+    <value>Créer un album</value>
+  </data>
+  <data name="DeleteAlbum" xml:space="preserve">
+    <value>Supprimer un album</value>
+  </data>
+  <data name="DeletePhotoFromStorage" xml:space="preserve">
+    <value>Supprimer la photo de la base interne</value>
+  </data>
+  <data name="EditAlbumInformation" xml:space="preserve">
+    <value>Editer les informations de l'album</value>
+  </data>
+  <data name="editIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditPhotoInformation" xml:space="preserve">
+    <value>Editer les informations de la photo</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="PleaseSelectOneOrMorePhotos" xml:space="preserve">
+    <value>Merci de bien vouloir selectionner une ou plusieurs photos.</value>
+  </data>
+  <data name="PleaseSelectOnePhoto" xml:space="preserve">
+    <value>Merci de bien vouloir selectionner une photo.</value>
+  </data>
+  <data name="RemovePhotoFromAlbum" xml:space="preserve">
+    <value>Supprimer de l'album</value>
+  </data>
+  <data name="Withdraw" xml:space="preserve">
+    <value>Enlever</value>
+  </data>
 </root>

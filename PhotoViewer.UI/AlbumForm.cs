@@ -55,16 +55,39 @@ namespace PhotoViewer.UI
             this.Text = Resources.AlbumFormTitle;
             this.Menu = CreateMenu();
 
+            #region AlbumInit
+            
+            this.AddAlbumButton.ToImageButton(Resources.addPhoto);
+            this.RemoveAlbumButton.ToImageButton(Resources.removePhoto);
+            this.EditAlbumButton.ToImageButton(Resources.editIcon);
+
+            ToolTip.SetToolTip(this.AddAlbumButton, Resources.CreateAlbum);
+            ToolTip.SetToolTip(this.RemoveAlbumButton, Resources.DeleteAlbum);
+            ToolTip.SetToolTip(this.EditAlbumButton, Resources.EditAlbumInformation);
+
+            #endregion
+
+            #region PhotoInit
+            
             this.PhotoListView.View = View.LargeIcon;
             this.PhotoListView.LargeImageList = photoThumbnails;
+
 
             this.AddPhotoButton.ToImageButton(Resources.addPhoto);
             this.RemovePhotoButton.ToImageButton(Resources.removePhoto);
             this.ImportExternalPhotoButton.ToImageButton(Resources.importPhoto);
+            this.EditPhotoButton.ToImageButton(Resources.editIcon);
             this.DeletePhotoButton.ToImageButton(Resources.deletePhoto);
             this.ZoomInButton.ToImageButton(Resources.zoomin);
             this.ZoomOutButton.ToImageButton(Resources.zoomout);
 
+            ToolTip.SetToolTip(this.AddPhotoButton, Resources.AddPhotoFromStorage);
+            ToolTip.SetToolTip(this.RemovePhotoButton, Resources.RemovePhotoFromAlbum);
+            ToolTip.SetToolTip(this.ImportExternalPhotoButton, Resources.Import);
+            ToolTip.SetToolTip(this.DeletePhotoButton, Resources.DeletePhotoFromStorage);
+            ToolTip.SetToolTip(this.EditPhotoButton, Resources.EditPhotoInformation);
+
+            #endregion
         }
 
         private MainMenu CreateMenu()
@@ -83,6 +106,23 @@ namespace PhotoViewer.UI
             albumMenuItem.MenuItems.Add(slideshowAlbumMenuItem);
 
             menu.MenuItems.Add(albumMenuItem);
+
+
+            MenuItem photoMenuItem = new MenuItem("&" + Resources.Photo);
+            MenuItem addPhotoMenuItem = new MenuItem("&" + Resources.AddElement, new EventHandler(onAddPhoto));
+            MenuItem editPhotoMenuItem = new MenuItem("&" + Resources.Edit, new EventHandler(onPhotoEdit));
+            MenuItem removePhotoMenuItem = new MenuItem("&" + Resources.Withdraw, new EventHandler(onRemovePhoto));
+            MenuItem importPhotoMenuItem = new MenuItem("&" + Resources.Edit, new EventHandler(onImportPhoto));
+            MenuItem deletePhotoMenuItem = new MenuItem("&" + Resources.Delete, new EventHandler(onDeletePhoto));
+
+            photoMenuItem.MenuItems.Add(addPhotoMenuItem);
+            photoMenuItem.MenuItems.Add(editPhotoMenuItem);
+            photoMenuItem.MenuItems.Add(removePhotoMenuItem);
+            photoMenuItem.MenuItems.Add(importPhotoMenuItem);
+            photoMenuItem.MenuItems.Add(deletePhotoMenuItem);
+
+            menu.MenuItems.Add(photoMenuItem);
+
 
             return menu;
         }
@@ -143,14 +183,14 @@ namespace PhotoViewer.UI
                 return;
             }
 
-            AlbumEditDialog albumCreationDialog = new AlbumEditDialog(selectedAlbum);
-            DialogResult dialogResult = albumCreationDialog.ShowDialog();
+            AlbumEditDialog albumEditionDialog = new AlbumEditDialog(selectedAlbum);
+            DialogResult dialogResult = albumEditionDialog.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
-                selectedAlbum.EventDate = albumCreationDialog.DateTimePicker.Value;
-                selectedAlbum.Title = albumCreationDialog.TitleTextBox.Text;
-                selectedAlbum.SubTitle = albumCreationDialog.SubTitleTextBox.Text;
+                selectedAlbum.EventDate = albumEditionDialog.DateTimePicker.Value;
+                selectedAlbum.Title = albumEditionDialog.TitleTextBox.Text;
+                selectedAlbum.SubTitle = albumEditionDialog.SubTitleTextBox.Text;
             }
 
             this.updateAlbumList();
@@ -197,7 +237,7 @@ namespace PhotoViewer.UI
 
         #region PhotoEventHandlers
         
-        private void onAddPhotoClick(object sender, EventArgs e)
+        private void onAddPhoto(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
             {
@@ -218,17 +258,13 @@ namespace PhotoViewer.UI
 
         }
 
-        private void onRemovePhotoClick(object sender, EventArgs e)
+        private void onRemovePhoto(object sender, EventArgs e)
         {
-            if (!IsAlbumSelected())
-            {
-                MessageBox.Show(Resources.PleaseSelectAlbum, Resources.InformationDialogTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                return;
-            }
-
+            
             if (!selectedPhotos.Any())
             {
+                MessageBox.Show(Resources.PleaseSelectOneOrMorePhotos, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
 
@@ -240,7 +276,7 @@ namespace PhotoViewer.UI
             updateAlbumPhotosList();
         }
 
-        private void onImportPhotoClick(object sender, EventArgs e)
+        private void onImportPhoto(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
             {
@@ -264,10 +300,12 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void onDeletePhotoClick(object sender, EventArgs e)
+        private void onDeletePhoto(object sender, EventArgs e)
         {
             if (!selectedPhotos.Any())
             {
+                MessageBox.Show(Resources.PleaseSelectOneOrMorePhotos, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
 
@@ -283,12 +321,19 @@ namespace PhotoViewer.UI
 
         private void onThumbnailDoubleClick(object sender, MouseEventArgs e)
         {
-            Photo photo = selectedPhotos.FirstOrDefault();
-            if (photo == null)
+            onPhotoEdit(sender, e);
+        }
+
+        private void onPhotoEdit(object sender, EventArgs e)
+        {
+            if (!selectedPhotos.Any())
             {
+                MessageBox.Show(Resources.PleaseSelectOnePhoto, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
 
+            Photo photo = selectedPhotos.First();
             PhotoEditDialog photoEditDialog = new PhotoEditDialog(photo);
             if (photoEditDialog.ShowDialog() == DialogResult.OK)
             {
@@ -297,7 +342,6 @@ namespace PhotoViewer.UI
                 photo.Category = photoEditDialog.CategoryTextBox.Text;
                 photo.DateTaken = photoEditDialog.EventDateTimePicker.Value;
             }
-
         }
 
         private void onZoomInClick(object sender, EventArgs e)
@@ -327,10 +371,5 @@ namespace PhotoViewer.UI
 
         #endregion
 
-        
-
-        
-
-        
     }
 }
