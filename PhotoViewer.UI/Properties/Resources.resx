@@ -211,10 +211,34 @@
   <data name="SlideshowFormTitle" xml:space="preserve">
     <value>PhotoViewer - Diaporama</value>
   </data>
+  <data name="EditAlbumDialogFormTitle" xml:space="preserve">
+    <value>PhotoViewer - Editer un album</value>
+  </data>
+  <data name="EditPhotoDialogFormTitle" xml:space="preserve">
+    <value>PhotoViewer - Editer une photo</value>
+  </data>
   <data name="zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoomin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zoomout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoomout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="EventDate" xml:space="preserve">
+    <value>Date de prise</value>
+  </data>
+  <data name="PleaseEnterAValidRating" xml:space="preserve">
+    <value>Merci de bien vouloir indiquer une note valide (nombre entier).</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

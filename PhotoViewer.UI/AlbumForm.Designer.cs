@@ -47,6 +47,7 @@
             this.AlbumTreeView.Size = new System.Drawing.Size(132, 507);
             this.AlbumTreeView.TabIndex = 0;
             this.AlbumTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.onAlbumSelection);
+            this.AlbumTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.onAlbumDoubleClick);
             // 
             // PhotoListView
             // 
@@ -55,15 +56,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PhotoListView.Location = new System.Drawing.Point(150, 12);
             this.PhotoListView.Name = "PhotoListView";
-            this.PhotoListView.Size = new System.Drawing.Size(597, 507);
+            this.PhotoListView.Size = new System.Drawing.Size(651, 507);
             this.PhotoListView.TabIndex = 1;
             this.PhotoListView.UseCompatibleStateImageBehavior = false;
+            this.PhotoListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.onThumbnailDoubleClick);
             // 
             // AddPhotoButton
             // 
             this.AddPhotoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddPhotoButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AddPhotoButton.Location = new System.Drawing.Point(753, 12);
+            this.AddPhotoButton.Location = new System.Drawing.Point(807, 12);
             this.AddPhotoButton.Name = "AddPhotoButton";
             this.AddPhotoButton.Size = new System.Drawing.Size(32, 32);
             this.AddPhotoButton.TabIndex = 2;
@@ -73,7 +75,7 @@
             // RemovePhotoButton
             // 
             this.RemovePhotoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemovePhotoButton.Location = new System.Drawing.Point(753, 50);
+            this.RemovePhotoButton.Location = new System.Drawing.Point(807, 50);
             this.RemovePhotoButton.Name = "RemovePhotoButton";
             this.RemovePhotoButton.Size = new System.Drawing.Size(32, 32);
             this.RemovePhotoButton.TabIndex = 3;
@@ -83,7 +85,7 @@
             // ImportExternalPhotoButton
             // 
             this.ImportExternalPhotoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImportExternalPhotoButton.Location = new System.Drawing.Point(753, 88);
+            this.ImportExternalPhotoButton.Location = new System.Drawing.Point(807, 88);
             this.ImportExternalPhotoButton.Name = "ImportExternalPhotoButton";
             this.ImportExternalPhotoButton.Size = new System.Drawing.Size(32, 32);
             this.ImportExternalPhotoButton.TabIndex = 4;
@@ -93,7 +95,7 @@
             // DeletePhotoButton
             // 
             this.DeletePhotoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeletePhotoButton.Location = new System.Drawing.Point(753, 126);
+            this.DeletePhotoButton.Location = new System.Drawing.Point(807, 126);
             this.DeletePhotoButton.Name = "DeletePhotoButton";
             this.DeletePhotoButton.Size = new System.Drawing.Size(32, 32);
             this.DeletePhotoButton.TabIndex = 5;
@@ -103,7 +105,7 @@
             // ZoomOutButton
             // 
             this.ZoomOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomOutButton.Location = new System.Drawing.Point(753, 487);
+            this.ZoomOutButton.Location = new System.Drawing.Point(807, 487);
             this.ZoomOutButton.Name = "ZoomOutButton";
             this.ZoomOutButton.Size = new System.Drawing.Size(32, 32);
             this.ZoomOutButton.TabIndex = 6;
@@ -113,7 +115,7 @@
             // ZoomInButton
             // 
             this.ZoomInButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomInButton.Location = new System.Drawing.Point(753, 449);
+            this.ZoomInButton.Location = new System.Drawing.Point(807, 449);
             this.ZoomInButton.Name = "ZoomInButton";
             this.ZoomInButton.Size = new System.Drawing.Size(32, 32);
             this.ZoomInButton.TabIndex = 7;
@@ -124,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 531);
+            this.ClientSize = new System.Drawing.Size(854, 531);
             this.Controls.Add(this.ZoomInButton);
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.DeletePhotoButton);

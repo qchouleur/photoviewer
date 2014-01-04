@@ -32,6 +32,8 @@ namespace PhotoViewer.UI
 
         public AlbumEditDialog(PhotoAlbum album) : this()
         {
+            this.Text = Resources.EditAlbumDialogFormTitle;
+
             this.TitleTextBox.Text = album.Title;
             this.SubTitleTextBox.Text = album.SubTitle;
             this.DateTimePicker.Value = album.EventDate;

@@ -39,8 +39,10 @@ namespace PhotoViewer.Domain
         public Photo() { } 
         public Photo(string path)
         {
+            this.DateTaken = DateTime.Now;
             this.Path = path;
             this.Image = Image.FromFile(path);
+
 
             this.Title = retrieveExifDataById(ExifTitleId);
             this.EquipmentManufacturer = retrieveExifDataById(ExifManufacturerId);

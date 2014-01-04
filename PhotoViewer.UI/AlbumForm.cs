@@ -16,6 +16,37 @@ namespace PhotoViewer.UI
     {
         private ImageList photoThumbnails = new ImageList() { ImageSize = PhotoThumbnailSize };
 
+        private bool IsAlbumSelected()
+        {
+            return this.AlbumTreeView.SelectedNode != null
+                   && this.AlbumTreeView.SelectedNode.Tag as PhotoAlbum != null;
+        }
+
+        private PhotoAlbum selectedAlbum
+        {
+            get
+            {
+                if (AlbumTreeView.SelectedNode == null)
+                {
+                    return null;
+                }
+                return this.AlbumTreeView.SelectedNode.Tag as PhotoAlbum;
+            }
+        }
+
+        private IEnumerable<Photo> selectedPhotos
+        {
+            get
+            {
+                foreach (ListViewItem selectedPhotos in PhotoListView.SelectedItems)
+                {
+                    Photo photo = selectedPhotos.Tag as Photo;
+                    if (photo == null) continue;
+                    yield return photo;
+                }
+            }
+        }
+
         public AlbumForm()
         {            
             InitializeComponent();
@@ -56,6 +87,35 @@ namespace PhotoViewer.UI
             return menu;
         }
 
+        private void updateAlbumList()
+        {
+            this.AlbumTreeView.Nodes.Clear();
+
+            foreach (PhotoAlbum album in InternalPhotoBase.Instance.GetAlbums())
+            {
+                this.AlbumTreeView.Nodes.Add(new TreeNode(album.Title) { Tag = album });
+            }
+        }
+
+        private void updateAlbumPhotosList()
+        {
+            this.PhotoListView.Items.Clear();
+            if (!IsAlbumSelected())
+            {
+                return;
+            }
+
+            foreach (Photo photo in selectedAlbum.Photos)
+            {
+                photoThumbnails.Images.Add(photo.Name, photo.Image);
+                ListViewItem photoItem = new ListViewItem(photo.Name) { Tag = photo, ImageKey = photo.Name };
+                PhotoListView.Items.Add(photoItem);
+            }
+        }
+
+
+        #region AlbumEventHandlers
+        
         private void onSlideShow(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
@@ -66,6 +126,11 @@ namespace PhotoViewer.UI
             }
 
             new AlbumSlideshowForm(selectedAlbum).Show();
+        }
+
+        private void onAlbumDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            onSlideShow(sender, e);
         }
 
         private void onEditAlbum(object sender, EventArgs e)
@@ -105,37 +170,6 @@ namespace PhotoViewer.UI
             this.updateAlbumPhotosList();
         }
 
-        private bool IsAlbumSelected()
-        {
-            return this.AlbumTreeView.SelectedNode != null
-                   && this.AlbumTreeView.SelectedNode.Tag as PhotoAlbum != null;
-        }
-
-        private PhotoAlbum selectedAlbum
-        {
-            get
-            {
-                if (AlbumTreeView.SelectedNode == null)
-                {
-                    return null;
-                }
-                return this.AlbumTreeView.SelectedNode.Tag as PhotoAlbum;
-            }
-        }
-
-        private IEnumerable<Photo> selectedPhotos
-        {
-            get
-            {
-                foreach (ListViewItem selectedPhotos in PhotoListView.SelectedItems)
-                {
-                    Photo photo = selectedPhotos.Tag as Photo;
-                    if (photo == null) continue;
-                    yield return photo;
-                }
-            }
-        }
-
         private void onCreateAlbum(object sender, EventArgs e)
         {
             AlbumEditDialog albumCreationDialog = new AlbumEditDialog();
@@ -151,35 +185,18 @@ namespace PhotoViewer.UI
                 InternalPhotoBase.Instance.Add(new PhotoAlbum(title, subtitle, date));
                 this.updateAlbumList();
             }
-            
+
         }
-    
-        private void updateAlbumList()
+        
+        private void onAlbumSelection(object sender, TreeViewEventArgs e)
         {
-            this.AlbumTreeView.Nodes.Clear();
-
-            foreach (PhotoAlbum album in InternalPhotoBase.Instance.GetAlbums())
-            {
-                this.AlbumTreeView.Nodes.Add(new TreeNode(album.Title) { Tag = album });
-            }
+            updateAlbumPhotosList();
         }
 
-        private void updateAlbumPhotosList()
-        {
-            this.PhotoListView.Items.Clear();
-            if (!IsAlbumSelected())
-            {
-                return;
-            }
+        #endregion
 
-            foreach (Photo photo in selectedAlbum.Photos)
-            {
-                photoThumbnails.Images.Add(photo.Name, photo.Image);
-                ListViewItem photoItem = new ListViewItem(photo.Name) { Tag = photo, ImageKey = photo.Name };
-                PhotoListView.Items.Add(photoItem);
-            }
-        }
-
+        #region PhotoEventHandlers
+        
         private void onAddPhotoClick(object sender, EventArgs e)
         {
             if (!IsAlbumSelected())
@@ -264,9 +281,23 @@ namespace PhotoViewer.UI
             }
         }
 
-        private void onAlbumSelection(object sender, TreeViewEventArgs e)
+        private void onThumbnailDoubleClick(object sender, MouseEventArgs e)
         {
-            updateAlbumPhotosList();
+            Photo photo = selectedPhotos.FirstOrDefault();
+            if (photo == null)
+            {
+                return;
+            }
+
+            PhotoEditDialog photoEditDialog = new PhotoEditDialog(photo);
+            if (photoEditDialog.ShowDialog() == DialogResult.OK)
+            {
+                photo.Rating = int.Parse(photoEditDialog.RatingTextBox.Text);
+                photo.Comment = photoEditDialog.CommentTextBox.Text;
+                photo.Category = photoEditDialog.CategoryTextBox.Text;
+                photo.DateTaken = photoEditDialog.EventDateTimePicker.Value;
+            }
+
         }
 
         private void onZoomInClick(object sender, EventArgs e)
@@ -286,12 +317,20 @@ namespace PhotoViewer.UI
             int newWidth = photoThumbnails.ImageSize.Width - 30;
             int newHeight = photoThumbnails.ImageSize.Height - 30;
 
+
             if (newWidth >= 1 || newHeight >= 1)
             {
                 photoThumbnails.ImageSize = new Size(newWidth, newHeight);
                 updateAlbumPhotosList();
             }
         }
-    
+
+        #endregion
+
+        
+
+        
+
+        
     }
 }

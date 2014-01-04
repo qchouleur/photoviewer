@@ -108,6 +108,24 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catégorie.
+        /// </summary>
+        internal static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commentaire.
+        /// </summary>
+        internal static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Créer.
         /// </summary>
         internal static string Create {
@@ -163,12 +181,39 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PhotoViewer - Editer un album.
+        /// </summary>
+        internal static string EditAlbumDialogFormTitle {
+            get {
+                return ResourceManager.GetString("EditAlbumDialogFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhotoViewer - Editer une photo.
+        /// </summary>
+        internal static string EditPhotoDialogFormTitle {
+            get {
+                return ResourceManager.GetString("EditPhotoDialogFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap emptyAlbum {
             get {
                 object obj = ResourceManager.GetObject("emptyAlbum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date de prise.
+        /// </summary>
+        internal static string EventDate {
+            get {
+                return ResourceManager.GetString("EventDate", resourceCulture);
             }
         }
         
@@ -278,6 +323,15 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merci de bien vouloir indiquer une note valide (nombre entier)..
+        /// </summary>
+        internal static string PleaseEnterAValidRating {
+            get {
+                return ResourceManager.GetString("PleaseEnterAValidRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merci de bien vouloir sélectionner un album..
         /// </summary>
         internal static string PleaseSelectAlbum {
@@ -293,6 +347,15 @@ namespace PhotoViewer.UI.Properties {
             get {
                 object obj = ResourceManager.GetObject("previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        internal static string Rating {
+            get {
+                return ResourceManager.GetString("Rating", resourceCulture);
             }
         }
         
@@ -330,6 +393,16 @@ namespace PhotoViewer.UI.Properties {
         internal static string SlideshowFormTitle {
             get {
                 return ResourceManager.GetString("SlideshowFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star {
+            get {
+                object obj = ResourceManager.GetObject("star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
