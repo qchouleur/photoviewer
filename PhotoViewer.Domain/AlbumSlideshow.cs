@@ -30,7 +30,7 @@ namespace PhotoViewer.Domain
         public Photo CurrentPhoto {
             get
             {
-                if (album.IsEmpty)
+                if (album.IsEmpty || album.Count <= photoIndex)
                 {
                     return Photo.EmptyPhoto;
                 }

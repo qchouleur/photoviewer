@@ -187,6 +187,9 @@
   <data name="addPhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addPhoto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="deletePhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="importPhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -195,6 +198,9 @@
   </data>
   <data name="OpenDialogTitle" xml:space="preserve">
     <value>PhotoViewer - Ouvrir</value>
+  </data>
+  <data name="PhotoDeleteValidationMessage" xml:space="preserve">
+    <value>La suppression de photo(s) est irréversible, êtes-vous sûr de vouloir continuer ?</value>
   </data>
   <data name="removePhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\subtract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

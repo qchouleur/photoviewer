@@ -44,12 +44,16 @@ namespace PhotoViewer.Domain
     
         public void Add(Photo photo)
         {
-            this.photos.Add(photo);
+            if(!this.photos.Any(p => p.Path == photo.Path))
+                this.photos.Add(photo);
         }
 
         public void Add(IEnumerable<Photo> photos)
         {
-            this.photos.AddRange(photos);
+            foreach (var photo in photos)
+            {
+                this.Add(photo);
+            }
         }
 
         public bool IsEmpty

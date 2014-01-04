@@ -46,7 +46,6 @@ namespace PhotoViewer.Domain
             }
         }
 
-
         public void Add(PhotoAlbum album)
         {
             this.albums.Add(album);
@@ -59,38 +58,74 @@ namespace PhotoViewer.Domain
 
         public void Add(Photo photo)
         {
-            this.photos.Add(photo);
+            // Empéche de rajouter plusieurs fois la même image
+            if (!photos.Any(p => p.Path == photo.Path))
+            {
+                this.photos.Add(photo);
+            }
         }
 
-        public void Add(IEnumerable<Photo> photos) 
+        public IEnumerable<Photo> Import(IEnumerable<Photo> photos) 
         {
+
+            List<Photo> importedPhotos = new List<Photo>();
+
             foreach (Photo photo in photos)
             {
+
                 string photoName = Path.GetFileName(photo.Path);
                 string destination = Path.Combine(ApplicationFolderPath, photoName);
-                File.Copy(photo.Path, destination, true);
 
+                // N'importe que les photos non présentes 
+                // Remplace la photo dupliquée par celle déjà présente
+                if(this.photos.Any(p => p.Path == destination))
+                {
+                    importedPhotos.Add(this.photos.First(p => p.Path == destination));
+                    continue;
+                }
+
+                File.Copy(photo.Path, destination, true);
                 photo.Path = destination;
+                this.Add(photo);
+                importedPhotos.Add(photo);
             }
-            
-            this.photos.AddRange(photos);
+
+            return importedPhotos;
+        }
+
+        public void Remove(Photo photo)
+        {
+            this.photos.Remove(photo);
+
+            foreach (var album in this.albums)
+            {
+                if (album.Contains(photo))
+                {
+                    album.Remove(photo);
+                }
+            }
         }
 
         public void Remove(IEnumerable<Photo> photos)
         {
             foreach (var photo in photos)
             {
-                this.photos.Remove(photo);
+                Remove(photo);
+            }
+        }
 
-                foreach (var album in this.albums)
-                {
-                    if (album.Contains(photo))
-                    {
-                        album.Remove(photo);
-                    }
-                }
+        public void Delete(Photo photo)
+        {
+            Remove(photo);
+            photo.Image.Dispose();
+            File.Delete(photo.Path);
+        }
 
-                File.Delete(photo.Path);
+        public void Delete(IEnumerable<Photo> photos)
+        {
+            foreach (Photo photo in photos)
+            {
+                Delete(photo);
             }
         }
 
