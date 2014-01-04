@@ -31,6 +31,8 @@ namespace PhotoViewer.UI
             this.RemovePhotoButton.ToImageButton(Resources.removePhoto);
             this.ImportExternalPhotoButton.ToImageButton(Resources.importPhoto);
             this.DeletePhotoButton.ToImageButton(Resources.deletePhoto);
+            this.ZoomInButton.ToImageButton(Resources.zoomin);
+            this.ZoomOutButton.ToImageButton(Resources.zoomout);
 
         }
 
@@ -265,6 +267,30 @@ namespace PhotoViewer.UI
         private void onAlbumSelection(object sender, TreeViewEventArgs e)
         {
             updateAlbumPhotosList();
+        }
+
+        private void onZoomInClick(object sender, EventArgs e)
+        {
+            int newWidth = photoThumbnails.ImageSize.Width + 30;
+            int newHeight = photoThumbnails.ImageSize.Height + 30;
+
+            if (newWidth < 256 || newHeight < 256)
+            {
+                photoThumbnails.ImageSize =  new Size(newWidth, newHeight);
+                updateAlbumPhotosList();
+            }
+        }
+
+        private void onZoomOutClick(object sender, EventArgs e)
+        {
+            int newWidth = photoThumbnails.ImageSize.Width - 30;
+            int newHeight = photoThumbnails.ImageSize.Height - 30;
+
+            if (newWidth >= 1 || newHeight >= 1)
+            {
+                photoThumbnails.ImageSize = new Size(newWidth, newHeight);
+                updateAlbumPhotosList();
+            }
         }
     
     }

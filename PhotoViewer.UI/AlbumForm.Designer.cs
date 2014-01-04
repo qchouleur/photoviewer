@@ -34,6 +34,8 @@
             this.RemovePhotoButton = new System.Windows.Forms.Button();
             this.ImportExternalPhotoButton = new System.Windows.Forms.Button();
             this.DeletePhotoButton = new System.Windows.Forms.Button();
+            this.ZoomOutButton = new System.Windows.Forms.Button();
+            this.ZoomInButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AlbumTreeView
@@ -98,11 +100,33 @@
             this.DeletePhotoButton.UseVisualStyleBackColor = true;
             this.DeletePhotoButton.Click += new System.EventHandler(this.onDeletePhotoClick);
             // 
+            // ZoomOutButton
+            // 
+            this.ZoomOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZoomOutButton.Location = new System.Drawing.Point(753, 487);
+            this.ZoomOutButton.Name = "ZoomOutButton";
+            this.ZoomOutButton.Size = new System.Drawing.Size(32, 32);
+            this.ZoomOutButton.TabIndex = 6;
+            this.ZoomOutButton.UseVisualStyleBackColor = true;
+            this.ZoomOutButton.Click += new System.EventHandler(this.onZoomOutClick);
+            // 
+            // ZoomInButton
+            // 
+            this.ZoomInButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZoomInButton.Location = new System.Drawing.Point(753, 449);
+            this.ZoomInButton.Name = "ZoomInButton";
+            this.ZoomInButton.Size = new System.Drawing.Size(32, 32);
+            this.ZoomInButton.TabIndex = 7;
+            this.ZoomInButton.UseVisualStyleBackColor = true;
+            this.ZoomInButton.Click += new System.EventHandler(this.onZoomInClick);
+            // 
             // AlbumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 531);
+            this.Controls.Add(this.ZoomInButton);
+            this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.DeletePhotoButton);
             this.Controls.Add(this.ImportExternalPhotoButton);
             this.Controls.Add(this.RemovePhotoButton);
@@ -123,6 +147,8 @@
         private System.Windows.Forms.Button RemovePhotoButton;
         private System.Windows.Forms.Button ImportExternalPhotoButton;
         private System.Windows.Forms.Button DeletePhotoButton;
+        private System.Windows.Forms.Button ZoomOutButton;
+        private System.Windows.Forms.Button ZoomInButton;
 
     }
 }
