@@ -53,6 +53,19 @@ namespace PhotoViewer.UI
             [DisplayName("Catégorie")]
             public string Category { get; set; }
 
+
+            [ReadOnly(true)]
+            [Category("Information")]
+            [DisplayName("Taille du fichier (octets)")]
+            public long Size { get; set; }
+
+
+            [ReadOnly(true)]
+            [Category("Information")]
+            [DisplayName("Type")]
+            public string Type { get; set; }
+
+
             #region EXIF
 
             [ReadOnly(true)]
@@ -95,6 +108,8 @@ namespace PhotoViewer.UI
                 this.Rating = photo.Rating;
                 this.Comment = photo.Comment;
                 this.Category = photo.Category;
+                this.Size = photo.Size;
+                this.Type = photo.Extension;
 
 
                 this.LensManufacturerName = photo.LensManufacturer;

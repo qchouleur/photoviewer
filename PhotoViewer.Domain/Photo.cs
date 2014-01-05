@@ -14,6 +14,9 @@ namespace PhotoViewer.Domain
         public static readonly Photo EmptyPhoto = new Photo();
 
         public string Name { get { return System.IO.Path.GetFileNameWithoutExtension(Path); } }
+        public long Size { get { return new FileInfo(Path).Length; } }
+        public string Extension { get { return System.IO.Path.GetExtension(Path); } }
+
         public string Category { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
