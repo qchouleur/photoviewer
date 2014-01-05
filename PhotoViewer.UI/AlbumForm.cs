@@ -83,15 +83,18 @@ namespace PhotoViewer.UI
             this.RemovePhotoButton.ToImageButton(Resources.removePhoto);
             this.ImportExternalPhotoButton.ToImageButton(Resources.importPhoto);
             this.EditPhotoButton.ToImageButton(Resources.editIcon);
+            this.DetailPhotoButton.ToImageButton(Resources.details);
             this.DeletePhotoButton.ToImageButton(Resources.deletePhoto);
             this.ZoomInButton.ToImageButton(Resources.zoomin);
             this.ZoomOutButton.ToImageButton(Resources.zoomout);
+
 
             ToolTip.SetToolTip(this.AddPhotoButton, Resources.AddPhotoFromStorage);
             ToolTip.SetToolTip(this.RemovePhotoButton, Resources.RemovePhotoFromAlbum);
             ToolTip.SetToolTip(this.ImportExternalPhotoButton, Resources.Import);
             ToolTip.SetToolTip(this.DeletePhotoButton, Resources.DeletePhotoFromStorage);
             ToolTip.SetToolTip(this.EditPhotoButton, Resources.EditPhotoInformation);
+            ToolTip.SetToolTip(this.DetailPhotoButton, Resources.ViewPhotoDetail);
 
             #endregion
         }
@@ -120,12 +123,14 @@ namespace PhotoViewer.UI
             MenuItem removePhotoMenuItem = new MenuItem("&" + Resources.Withdraw, new EventHandler(onRemovePhoto));
             MenuItem importPhotoMenuItem = new MenuItem("&" + Resources.Import, new EventHandler(onImportPhoto));
             MenuItem deletePhotoMenuItem = new MenuItem("&" + Resources.Delete, new EventHandler(onDeletePhoto));
+            MenuItem detailPhotoMenuItem = new MenuItem("&" + Resources.Detail, new EventHandler(onPhotoDetail));
 
             photoMenuItem.MenuItems.Add(addPhotoMenuItem);
             photoMenuItem.MenuItems.Add(editPhotoMenuItem);
             photoMenuItem.MenuItems.Add(removePhotoMenuItem);
             photoMenuItem.MenuItems.Add(importPhotoMenuItem);
             photoMenuItem.MenuItems.Add(deletePhotoMenuItem);
+            photoMenuItem.MenuItems.Add(detailPhotoMenuItem);
 
             menu.MenuItems.Add(photoMenuItem);
 
@@ -344,7 +349,20 @@ namespace PhotoViewer.UI
 
         private void onThumbnailDoubleClick(object sender, MouseEventArgs e)
         {
-            onPhotoEdit(sender, e);
+            onPhotoDetail(sender, e);
+        }
+
+        private void onPhotoDetail(object sender, EventArgs e)
+        {
+            if (!selectedPhotos.Any())
+            {
+                MessageBox.Show(Resources.PleaseSelectOnePhoto, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            Photo photo = selectedPhotos.First();
+            new PhotoDetailForm(photo).Show();
         }
 
         private void onPhotoEdit(object sender, EventArgs e)

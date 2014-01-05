@@ -117,6 +117,15 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nom de l&apos;artiste.
+        /// </summary>
+        internal static string ArtistName {
+            get {
+                return ResourceManager.GetString("ArtistName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuler.
         /// </summary>
         internal static string Cancel {
@@ -217,6 +226,25 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Informations.
+        /// </summary>
+        internal static string Detail {
+            get {
+                return ResourceManager.GetString("Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap details {
+            get {
+                object obj = ResourceManager.GetObject("details", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editer.
         /// </summary>
         internal static string Edit {
@@ -291,6 +319,15 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Données EXIF.
+        /// </summary>
+        internal static string ExifInformationCategory {
+            get {
+                return ResourceManager.GetString("ExifInformationCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {
@@ -320,11 +357,56 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string InformationCategory {
+            get {
+                return ResourceManager.GetString("InformationCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PhotoViewer - Information.
         /// </summary>
         internal static string InformationDialogTitle {
             get {
                 return ResourceManager.GetString("InformationDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom du fabricant de l&apos;objectif.
+        /// </summary>
+        internal static string LensManufacturerName {
+            get {
+                return ResourceManager.GetString("LensManufacturerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modéle de l&apos;objectif.
+        /// </summary>
+        internal static string LensName {
+            get {
+                return ResourceManager.GetString("LensName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom du fabricant.
+        /// </summary>
+        internal static string ManufacturerName {
+            get {
+                return ResourceManager.GetString("ManufacturerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modéle du produit.
+        /// </summary>
+        internal static string ManufacturerProductName {
+            get {
+                return ResourceManager.GetString("ManufacturerProductName", resourceCulture);
             }
         }
         
@@ -335,6 +417,15 @@ namespace PhotoViewer.UI.Properties {
             get {
                 object obj = ResourceManager.GetObject("minus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -391,6 +482,15 @@ namespace PhotoViewer.UI.Properties {
         internal static string PhotoDeleteValidationMessage {
             get {
                 return ResourceManager.GetString("PhotoDeleteValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhotoViewer - Détail.
+        /// </summary>
+        internal static string PhotoDetailFormTitle {
+            get {
+                return ResourceManager.GetString("PhotoDetailFormTitle", resourceCulture);
             }
         }
         
@@ -515,16 +615,6 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap star {
-            get {
-                object obj = ResourceManager.GetObject("star", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Sous-titre.
         /// </summary>
         internal static string SubTitle {
@@ -539,6 +629,15 @@ namespace PhotoViewer.UI.Properties {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afficher les détails de la photo.
+        /// </summary>
+        internal static string ViewPhotoDetail {
+            get {
+                return ResourceManager.GetString("ViewPhotoDetail", resourceCulture);
             }
         }
         

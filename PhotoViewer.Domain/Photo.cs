@@ -29,10 +29,16 @@ namespace PhotoViewer.Domain
         private static readonly int ExifTitleId = 0x0320;
         private static readonly int ExifManufacturerId = 0x010F;
         private static readonly int ExifEquipmentId = 0x0110;
+        private static readonly int ExifArtistId = 0x013B;
+        private static readonly int ExifLensManufacturerId = 0xa433;
+        private static readonly int ExifLensModel = 0xa434;
 
         public string Title { get; private set; }
         public string EquipmentManufacturer { get; private set; }
         public string EquipmentModel { get; private set; }
+        public string Artist { get; private set; }
+        public string LensManufacturer { get; private set; }
+        public string LensModel { get; private set; }
 
         #endregion
 
@@ -47,6 +53,9 @@ namespace PhotoViewer.Domain
             this.Title = retrieveExifDataById(ExifTitleId);
             this.EquipmentManufacturer = retrieveExifDataById(ExifManufacturerId);
             this.EquipmentModel = retrieveExifDataById(ExifEquipmentId);
+            this.Artist = retrieveExifDataById(ExifArtistId);
+            this.LensManufacturer = retrieveExifDataById(ExifLensManufacturerId);
+            this.LensModel = retrieveExifDataById(ExifLensModel);
             
         }
 

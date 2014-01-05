@@ -238,9 +238,6 @@
   <data name="Rating" xml:space="preserve">
     <value>Note</value>
   </data>
-  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AddElement" xml:space="preserve">
     <value>Ajouter</value>
   </data>
@@ -282,5 +279,41 @@
   </data>
   <data name="Withdraw" xml:space="preserve">
     <value>Enlever</value>
+  </data>
+  <data name="PhotoDetailFormTitle" xml:space="preserve">
+    <value>PhotoViewer - Détail</value>
+  </data>
+  <data name="ArtistName" xml:space="preserve">
+    <value>Nom de l'artiste</value>
+  </data>
+  <data name="details" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExifInformationCategory" xml:space="preserve">
+    <value>Données EXIF</value>
+  </data>
+  <data name="InformationCategory" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="LensManufacturerName" xml:space="preserve">
+    <value>Nom du fabricant de l'objectif</value>
+  </data>
+  <data name="LensName" xml:space="preserve">
+    <value>Modéle de l'objectif</value>
+  </data>
+  <data name="ManufacturerName" xml:space="preserve">
+    <value>Nom du fabricant</value>
+  </data>
+  <data name="ManufacturerProductName" xml:space="preserve">
+    <value>Modéle du produit</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="ViewPhotoDetail" xml:space="preserve">
+    <value>Afficher les détails de la photo</value>
   </data>
 </root>
