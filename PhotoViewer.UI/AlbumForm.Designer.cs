@@ -68,6 +68,9 @@
             this.PhotoListView.DragDrop += new System.Windows.Forms.DragEventHandler(this.onPhotoDragDrop);
             this.PhotoListView.DragEnter += new System.Windows.Forms.DragEventHandler(this.onPhotoDragEnter);
             this.PhotoListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.onThumbnailDoubleClick);
+            this.PhotoListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.onPhotoMouseDown);
+            this.PhotoListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.onPhotoMouseMove);
+            this.PhotoListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.onPhotoMouseUp);
             // 
             // AddPhotoButton
             // 

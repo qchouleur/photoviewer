@@ -64,5 +64,11 @@ namespace PhotoViewer.Domain
             }
         }
 
+
+        public void MovePhoto(int index, Photo photo)
+        {
+            photos.Remove(photo);
+            photos.Insert(index, photo);
+        }
     }
 }

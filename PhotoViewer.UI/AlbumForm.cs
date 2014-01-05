@@ -35,6 +35,9 @@ namespace PhotoViewer.UI
             }
         }
 
+        private ListViewItem heldDownItem { get; set; }
+        private Point dragStartPoint { get; set; }
+
         private IEnumerable<Photo> selectedPhotos
         {
             get
@@ -389,6 +392,32 @@ namespace PhotoViewer.UI
             }
         }
 
+        private void onPhotoMouseDown(object sender, MouseEventArgs e)
+        {
+            PhotoListView.AutoArrange = false;
+            heldDownItem = PhotoListView.GetItemAt(e.X, e.Y);
+            if (heldDownItem != null)
+            {
+                dragStartPoint = new Point(e.X - heldDownItem.Position.X,
+                                           e.Y - heldDownItem.Position.Y);
+            }
+        }
+
+        private void onPhotoMouseMove(object sender, MouseEventArgs e)
+        {
+            if (heldDownItem != null)
+            {
+                heldDownItem.Position = new Point(e.Location.X - dragStartPoint.X,
+                                                  e.Location.Y - dragStartPoint.Y);
+            }
+        }
+
+        private void onPhotoMouseUp(object sender, MouseEventArgs e)
+        {
+            heldDownItem = null;
+            PhotoListView.AutoArrange = true;
+        }
+
         private void onPhotoDragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -426,10 +455,8 @@ namespace PhotoViewer.UI
             selectedAlbum.Add(importedPhotos);
             updateAlbumPhotosList();
         }
-
-        #endregion
-
         
+        #endregion
 
     }
 }
