@@ -12,7 +12,8 @@ namespace PhotoViewer.Domain
         public static readonly string ApplicationFolderPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "PhotoViewer");
-        
+        private static string[] ValidImageExtension = new string[] { ".png", ".jpg", ".jpeg" };
+
         private static InternalPhotoBase instance;
 
         private List<Photo> photos = new List<Photo>();
@@ -137,6 +138,11 @@ namespace PhotoViewer.Domain
         public IEnumerable<Photo> GetPhotos()
         {
             return photos.AsReadOnly();
+        }
+
+        public static bool AcceptPhotoOfExtension(string extension)
+        {
+            return ValidImageExtension.Contains(extension);
         }
     }
 }

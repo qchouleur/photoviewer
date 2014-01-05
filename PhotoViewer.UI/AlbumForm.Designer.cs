@@ -65,6 +65,8 @@
             this.PhotoListView.Size = new System.Drawing.Size(689, 507);
             this.PhotoListView.TabIndex = 1;
             this.PhotoListView.UseCompatibleStateImageBehavior = false;
+            this.PhotoListView.DragDrop += new System.Windows.Forms.DragEventHandler(this.onPhotoDragDrop);
+            this.PhotoListView.DragEnter += new System.Windows.Forms.DragEventHandler(this.onPhotoDragEnter);
             this.PhotoListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.onThumbnailDoubleClick);
             // 
             // AddPhotoButton

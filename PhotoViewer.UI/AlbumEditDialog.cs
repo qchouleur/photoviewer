@@ -28,6 +28,7 @@ namespace PhotoViewer.UI
             this.CancelAlbumButton.Text = Resources.Cancel;
 
             this.AcceptButton = this.SaveAlbumButton;
+            this.CancelButton = this.CancelAlbumButton;
         }
 
         public AlbumEditDialog(PhotoAlbum album) : this()

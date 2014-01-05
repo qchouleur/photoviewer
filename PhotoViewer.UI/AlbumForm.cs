@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +73,8 @@ namespace PhotoViewer.UI
             this.PhotoListView.View = View.LargeIcon;
             this.PhotoListView.LargeImageList = photoThumbnails;
 
+            // Autorise le drag and drop de fichier depuis l'éxterieur
+            this.PhotoListView.AllowDrop = true;
 
             this.AddPhotoButton.ToImageButton(Resources.addPhoto);
             this.RemovePhotoButton.ToImageButton(Resources.removePhoto);
@@ -140,6 +143,8 @@ namespace PhotoViewer.UI
         private void updateAlbumPhotosList()
         {
             this.PhotoListView.Items.Clear();
+            this.photoThumbnails.Images.Clear();
+
             if (!IsAlbumSelected())
             {
                 return;
@@ -260,7 +265,15 @@ namespace PhotoViewer.UI
 
         private void onRemovePhoto(object sender, EventArgs e)
         {
-            
+
+            if (!IsAlbumSelected())
+            {
+                MessageBox.Show(Resources.PleaseSelectAlbum, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+
             if (!selectedPhotos.Any())
             {
                 MessageBox.Show(Resources.PleaseSelectOneOrMorePhotos, Resources.InformationDialogTitle,
@@ -302,6 +315,13 @@ namespace PhotoViewer.UI
 
         private void onDeletePhoto(object sender, EventArgs e)
         {
+            if (!IsAlbumSelected())
+            {
+                MessageBox.Show(Resources.PleaseSelectAlbum, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
             if (!selectedPhotos.Any())
             {
                 MessageBox.Show(Resources.PleaseSelectOneOrMorePhotos, Resources.InformationDialogTitle,
@@ -369,7 +389,47 @@ namespace PhotoViewer.UI
             }
         }
 
+        private void onPhotoDragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void onPhotoDragDrop(object sender, DragEventArgs e)
+        {
+
+            if (!IsAlbumSelected())
+            {
+                MessageBox.Show(Resources.PleaseSelectAlbum, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            string[] dropedFilesPath = e.Data.GetData(DataFormats.FileDrop) as string[];
+            if (dropedFilesPath == null)
+            {
+                return;
+            }
+
+            List<Photo> photos = new List<Photo>();
+            foreach (string dropedFilePath in dropedFilesPath)
+            {
+                if (InternalPhotoBase.AcceptPhotoOfExtension(Path.GetExtension(dropedFilePath)))
+                {
+                    photos.Add(new Photo(dropedFilePath));
+                }
+            }
+
+            var importedPhotos = InternalPhotoBase.Instance.Import(photos);
+            selectedAlbum.Add(importedPhotos);
+            updateAlbumPhotosList();
+        }
+
         #endregion
+
+        
 
     }
 }
