@@ -75,7 +75,7 @@ namespace PhotoViewer.UI
             
             this.PhotoListView.View = View.LargeIcon;
             this.PhotoListView.LargeImageList = photoThumbnails;
-
+            
             // Autorise le drag and drop de fichier depuis l'éxterieur
             this.PhotoListView.AllowDrop = true;
 
@@ -118,7 +118,7 @@ namespace PhotoViewer.UI
             MenuItem addPhotoMenuItem = new MenuItem("&" + Resources.AddElement, new EventHandler(onAddPhoto));
             MenuItem editPhotoMenuItem = new MenuItem("&" + Resources.Edit, new EventHandler(onPhotoEdit));
             MenuItem removePhotoMenuItem = new MenuItem("&" + Resources.Withdraw, new EventHandler(onRemovePhoto));
-            MenuItem importPhotoMenuItem = new MenuItem("&" + Resources.Edit, new EventHandler(onImportPhoto));
+            MenuItem importPhotoMenuItem = new MenuItem("&" + Resources.Import, new EventHandler(onImportPhoto));
             MenuItem deletePhotoMenuItem = new MenuItem("&" + Resources.Delete, new EventHandler(onDeletePhoto));
 
             photoMenuItem.MenuItems.Add(addPhotoMenuItem);
@@ -409,13 +409,26 @@ namespace PhotoViewer.UI
             {
                 heldDownItem.Position = new Point(e.Location.X - dragStartPoint.X,
                                                   e.Location.Y - dragStartPoint.Y);
+                Cursor = Cursors.Hand;
             }
+
         }
 
         private void onPhotoMouseUp(object sender, MouseEventArgs e)
         {
+            if (heldDownItem != null)
+            {
+                // Mise à jour de la position dans l'album
+                int index = heldDownItem.Index;
+                Photo draggedPhoto = heldDownItem.Tag as Photo;
+                selectedAlbum.MovePhoto(index, draggedPhoto);
+                
+                Cursor = Cursors.Default;
+            }
+
             heldDownItem = null;
             PhotoListView.AutoArrange = true;
+            
         }
 
         private void onPhotoDragEnter(object sender, DragEventArgs e)
