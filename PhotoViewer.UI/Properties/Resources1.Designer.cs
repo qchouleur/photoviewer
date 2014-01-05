@@ -328,6 +328,16 @@ namespace PhotoViewer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap html {
+            get {
+                object obj = ResourceManager.GetObject("html", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {
@@ -629,6 +639,15 @@ namespace PhotoViewer.UI.Properties {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afficher en HTML.
+        /// </summary>
+        internal static string ViewInHtml {
+            get {
+                return ResourceManager.GetString("ViewInHtml", resourceCulture);
             }
         }
         

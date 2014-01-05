@@ -43,6 +43,7 @@
             this.EditPhotoButton = new System.Windows.Forms.Button();
             this.EditAlbumButton = new System.Windows.Forms.Button();
             this.DetailPhotoButton = new System.Windows.Forms.Button();
+            this.HTMLAlbumButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AlbumTreeView
@@ -182,11 +183,21 @@
             this.DetailPhotoButton.UseVisualStyleBackColor = true;
             this.DetailPhotoButton.Click += new System.EventHandler(this.onPhotoDetail);
             // 
+            // HTMLAlbumButton
+            // 
+            this.HTMLAlbumButton.Location = new System.Drawing.Point(12, 126);
+            this.HTMLAlbumButton.Name = "HTMLAlbumButton";
+            this.HTMLAlbumButton.Size = new System.Drawing.Size(32, 32);
+            this.HTMLAlbumButton.TabIndex = 13;
+            this.HTMLAlbumButton.UseVisualStyleBackColor = true;
+            this.HTMLAlbumButton.Click += new System.EventHandler(this.onViewInHtml);
+            // 
             // AlbumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 531);
+            this.Controls.Add(this.HTMLAlbumButton);
             this.Controls.Add(this.DetailPhotoButton);
             this.Controls.Add(this.EditAlbumButton);
             this.Controls.Add(this.EditPhotoButton);
@@ -222,6 +233,7 @@
         private System.Windows.Forms.Button EditPhotoButton;
         private System.Windows.Forms.Button EditAlbumButton;
         private System.Windows.Forms.Button DetailPhotoButton;
+        private System.Windows.Forms.Button HTMLAlbumButton;
 
     }
 }

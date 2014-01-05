@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumHTMLPrinter.cs" />
     <Compile Include="AlbumSlideshow.cs" />
     <Compile Include="InternalPhotoBase.cs" />
     <Compile Include="Photo.cs" />

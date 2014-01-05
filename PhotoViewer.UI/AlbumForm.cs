@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -64,10 +65,12 @@ namespace PhotoViewer.UI
             this.AddAlbumButton.ToImageButton(Resources.addPhoto);
             this.RemoveAlbumButton.ToImageButton(Resources.removePhoto);
             this.EditAlbumButton.ToImageButton(Resources.editIcon);
+            this.HTMLAlbumButton.ToImageButton(Resources.html);
 
             ToolTip.SetToolTip(this.AddAlbumButton, Resources.CreateAlbum);
             ToolTip.SetToolTip(this.RemoveAlbumButton, Resources.DeleteAlbum);
             ToolTip.SetToolTip(this.EditAlbumButton, Resources.EditAlbumInformation);
+            ToolTip.SetToolTip(this.HTMLAlbumButton, Resources.ViewInHtml);
 
             #endregion
 
@@ -244,6 +247,25 @@ namespace PhotoViewer.UI
         private void onAlbumSelection(object sender, TreeViewEventArgs e)
         {
             updateAlbumPhotosList();
+        }
+
+        private void onViewInHtml(object sender, EventArgs e)
+        {
+            if (!IsAlbumSelected())
+            {
+                MessageBox.Show(Resources.PleaseSelectAlbum, Resources.InformationDialogTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            AlbumHTMLPrinter printer = new AlbumHTMLPrinter(4, 120, 120);
+            string filePath = Path.Combine(InternalPhotoBase.ApplicationFolderPath, selectedAlbum.Title + ".html");
+            using(StreamWriter writer = new StreamWriter(filePath, false))
+            {
+                writer.Write(printer.Print(selectedAlbum));
+            }
+
+            Process.Start("file:\\\\" + filePath);
         }
 
         #endregion
