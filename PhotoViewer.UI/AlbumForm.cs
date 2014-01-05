@@ -55,10 +55,11 @@ namespace PhotoViewer.UI
         public AlbumForm()
         {            
             InitializeComponent();
-
+            InternalPhotoBase.Instance.Load();
 
             this.Text = Resources.AlbumFormTitle;
             this.Menu = CreateMenu();
+            this.FormClosed += onClose;
 
             #region AlbumInit
             
@@ -71,6 +72,8 @@ namespace PhotoViewer.UI
             ToolTip.SetToolTip(this.RemoveAlbumButton, Resources.DeleteAlbum);
             ToolTip.SetToolTip(this.EditAlbumButton, Resources.EditAlbumInformation);
             ToolTip.SetToolTip(this.HTMLAlbumButton, Resources.ViewInHtml);
+
+            
 
             #endregion
 
@@ -100,6 +103,13 @@ namespace PhotoViewer.UI
             ToolTip.SetToolTip(this.DetailPhotoButton, Resources.ViewPhotoDetail);
 
             #endregion
+
+            updateAlbumList();
+        }
+
+        void onClose(object sender, FormClosedEventArgs e)
+        {
+            InternalPhotoBase.Instance.Save();
         }
 
         private MainMenu CreateMenu()
@@ -111,11 +121,13 @@ namespace PhotoViewer.UI
             MenuItem removeAlbumMenuItem = new MenuItem("&" + Resources.Delete, new EventHandler(onDeleteAlbum));
             MenuItem editAlbumMenuItem = new MenuItem("&" + Resources.Edit, new EventHandler(onEditAlbum));
             MenuItem slideshowAlbumMenuItem = new MenuItem("&" + Resources.Slideshow, new EventHandler(onSlideShow));
+            MenuItem showHtmlAlbumMenuItem = new MenuItem("&" + Resources.ViewInHtml, new EventHandler(onViewInHtml));
 
             albumMenuItem.MenuItems.Add(createAlbumMenuItem);
             albumMenuItem.MenuItems.Add(removeAlbumMenuItem);
             albumMenuItem.MenuItems.Add(editAlbumMenuItem);
             albumMenuItem.MenuItems.Add(slideshowAlbumMenuItem);
+            albumMenuItem.MenuItems.Add(showHtmlAlbumMenuItem);
 
             menu.MenuItems.Add(albumMenuItem);
 
@@ -258,6 +270,7 @@ namespace PhotoViewer.UI
                 return;
             }
 
+            // Compose et enregistre le fichier HTML de l'album selectionné
             AlbumHTMLPrinter printer = new AlbumHTMLPrinter(4, 120, 120);
             string filePath = Path.Combine(InternalPhotoBase.ApplicationFolderPath, selectedAlbum.Title + ".html");
             using(StreamWriter writer = new StreamWriter(filePath, false))
@@ -265,6 +278,7 @@ namespace PhotoViewer.UI
                 writer.Write(printer.Print(selectedAlbum));
             }
 
+            // Lance le navigateur par défaut pour lire le fichier HTML.
             Process.Start("file:\\\\" + filePath);
         }
 
@@ -403,7 +417,7 @@ namespace PhotoViewer.UI
                 photo.Rating = int.Parse(photoEditDialog.RatingTextBox.Text);
                 photo.Comment = photoEditDialog.CommentTextBox.Text;
                 photo.Category = photoEditDialog.CategoryTextBox.Text;
-                photo.DateTaken = photoEditDialog.EventDateTimePicker.Value;
+                photo.Date = photoEditDialog.EventDateTimePicker.Value;
             }
         }
 

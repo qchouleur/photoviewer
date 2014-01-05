@@ -38,7 +38,7 @@ namespace PhotoViewer.UI
         {
             this.CommentTextBox.Text = photo.Comment;
             this.CategoryTextBox.Text = photo.Category;
-            this.EventDateTimePicker.Value = photo.DateTaken;
+            this.EventDateTimePicker.Value = photo.Date;
             this.RatingTextBox.Text = photo.Rating.ToString();
         }
 

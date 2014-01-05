@@ -7,28 +7,61 @@ using System.Threading.Tasks;
 
 namespace PhotoViewer.Domain
 {
-    public class InternalPhotoBase
+    public class InternalPhotoBase : IPhotoSource
     {
         public static readonly string ApplicationFolderPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "PhotoViewer");
-        private static string[] ValidImageExtension = new string[] { ".png", ".jpg", ".jpeg" };
+        private static readonly string AlbumFilePath = 
+            Path.Combine(ApplicationFolderPath, "albums.xml");
+        private static readonly string PhotoFilePath =
+            Path.Combine(ApplicationFolderPath, "photos.xml");
+
+        private static string[] ValidImageExtension = 
+            new string[] { ".png", ".jpg", ".jpeg" };
 
         private static InternalPhotoBase instance;
 
         private List<Photo> photos = new List<Photo>();
         private List<PhotoAlbum> albums = new List<PhotoAlbum>();
+        private XmlSerializer serializer;
 
-        private InternalPhotoBase() 
-        { 
+
+        private InternalPhotoBase() { }
+
+        public void Load()
+        {
+            serializer = new XmlSerializer(this);
+
             if (!Directory.Exists(ApplicationFolderPath))
             {
                 Directory.CreateDirectory(ApplicationFolderPath);
             }
 
-            // todos : load photos in directory
-            // todos : load albums in directory
 
+            if (File.Exists(PhotoFilePath))
+            {
+                this.photos = serializer.DeserializePhotos(PhotoFilePath).ToList();
+            }
+
+
+            if (File.Exists(AlbumFilePath))
+            {
+                this.albums = serializer.DeserializeAlbums(AlbumFilePath).ToList();
+            }
+        }
+
+        public void Save()
+        {
+            if (photos.Any())
+            {
+                serializer.Serialize(photos, PhotoFilePath);
+            }
+
+            if (albums.Any())
+            {
+                serializer.Serialize(albums, AlbumFilePath);
+            }
         }
 
         public static InternalPhotoBase Instance
@@ -38,11 +71,7 @@ namespace PhotoViewer.Domain
                 if (instance == null)
                 {
                     instance = new InternalPhotoBase();
-                    InternalPhotoBase.Instance.Add(new Photo(@"C:\Users\QC\AppData\Roaming\PhotoViewer\a.jpg"));
-                    InternalPhotoBase.Instance.Add(new Photo(@"C:\Users\QC\AppData\Roaming\PhotoViewer\b.jpg"));
-
                 }
-
                 return instance;
             }
         }
@@ -143,6 +172,11 @@ namespace PhotoViewer.Domain
         public static bool AcceptPhotoOfExtension(string extension)
         {
             return ValidImageExtension.Contains(extension);
+        }
+
+        public Photo GetPhoto(string path)
+        {
+            return photos.FirstOrDefault(p => p.Path == path);
         }
     }
 }

@@ -26,6 +26,12 @@ namespace PhotoViewer.Domain
             this.EventDate = date;
         }
 
+        public PhotoAlbum(string title, string subtitle, DateTime date, IEnumerable<Photo> photo)
+            : this(title, subtitle, date)
+        {
+            this.photos = photos.ToList();
+        }
+
         public Photo this[int index]
         {
             get { return photos[index]; }

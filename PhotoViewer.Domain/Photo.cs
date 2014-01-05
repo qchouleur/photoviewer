@@ -17,7 +17,7 @@ namespace PhotoViewer.Domain
         public string Category { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
-        public DateTime DateTaken { get; set ;}
+        public DateTime Date { get; set ;}
         
 
         public string Path { get; set; }
@@ -45,7 +45,7 @@ namespace PhotoViewer.Domain
         public Photo() { } 
         public Photo(string path)
         {
-            this.DateTaken = DateTime.Now;
+            this.Date = DateTime.Now;
             this.Path = path;
             this.Image = Image.FromFile(path);
 
@@ -57,6 +57,13 @@ namespace PhotoViewer.Domain
             this.LensManufacturer = retrieveExifDataById(ExifLensManufacturerId);
             this.LensModel = retrieveExifDataById(ExifLensModel);
             
+        }
+        public Photo(string path, string comment, string category, int rating, DateTime date) : this(path)
+        {
+            this.Comment = comment;
+            this.Rating = rating;
+            this.Category = category;
+            this.Date = date;
         }
 
         private string retrieveExifDataById(int propertyId)

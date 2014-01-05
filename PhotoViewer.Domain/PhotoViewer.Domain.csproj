@@ -49,9 +49,11 @@
     <Compile Include="AlbumHTMLPrinter.cs" />
     <Compile Include="AlbumSlideshow.cs" />
     <Compile Include="InternalPhotoBase.cs" />
+    <Compile Include="IPhotoSource.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="PhotoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
